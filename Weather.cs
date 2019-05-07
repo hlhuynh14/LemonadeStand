@@ -8,22 +8,32 @@ namespace LemonadeStand
 {
     class Weather
     {// member variables (HAS A)
-        double temperature;
+        double ForecastTemperature;
         string forecast;
 
         // constructor
         public Weather()
         {
-            temperature = GenerateTemperature();
+            ForecastTemperature = GenerateForecastTemperature();
             forecast = GenerateForecast();
         }
 
         // member methods (CAN DO)
-        public double GenerateTemperature()
-        { Random rnd = new Random();
-            double TemperatureChance = rnd.Next(59, 106);
+        public double GenerateForecastTemperature()
+        {
+            int MaxWeatherRange = 106;
+            int MinWeatherRange = 59;
+
+            Random rnd = new Random();
+            int TemperatureChance = rnd.Next(MinWeatherRange, MaxWeatherRange);
             return TemperatureChance;
 
+        }
+        public double GenerateActualTemperature( int ForecastTemperature)
+        { int WeatherDeviation = 10;
+            Random rnd = new Random();
+            int ActualTemperatureChance = rnd.Next((ForecastTemperature - WeatherDeviation), (ForecastTemperature + WeatherDeviation);
+            return ActualTemperatureChance;
         }
 
         public string GenerateForecast()
@@ -44,6 +54,53 @@ namespace LemonadeStand
                 return "Cloudy";
             }
 
+        }
+        public string GenerateActualWeather( string forecast)
+        {
+            if (forecast == "Rain")
+            {
+                Random rnd = new Random();
+                double WeatherChanceRain = rnd.Next(1, 3);
+                if (WeatherChanceRain == 2)
+                {
+                    return "Rain";
+                }
+                else
+                {
+                    return "Cloudy";
+                }
+
+            }
+            else if (forecast == "Sunny")
+            {
+                Random rnd = new Random();
+                double WeatherChanceSunny = rnd.Next(1, 3);
+                if (WeatherChanceSunny == 2)
+                {
+                    return "Sunny";
+                }
+                else
+                {
+                    return "Cloudy";
+                }
+            }
+            else
+            {
+                Random rnd = new Random();
+                double WeatherChanceCloudy = rnd.Next(1, 4);
+                if (WeatherChanceCloudy == 3)
+                {
+                    return "Cloudy";
+                }
+                else if (WeatherChanceCloudy == 2)
+                {
+                    return "Sunny";
+                }
+                else
+                {
+                    return "Rainy";
+                }
+            }
         }
     }
 }
