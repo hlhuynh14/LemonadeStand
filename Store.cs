@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Store
+    public class Store
     {// member variables (HAS A)
         double TwentyFiveCups;
         double FiftyCups;
@@ -21,7 +21,7 @@ namespace LemonadeStand
         double TwoHundredFiftyIcecubes;
         double FiveHundredIcecubes;
         double TwentyFiveCupsCost;
-        double FiftyCupsCost ;
+        double FiftyCupsCost;
         double OneHundredCupsCost;
         double TenLemonsCost;
         double ThirtyLemonsCost;
@@ -37,83 +37,77 @@ namespace LemonadeStand
         // constructor
         public Store()
         {
-             TwentyFiveCups = .25;
-             FiftyCups = 50;
+            TwentyFiveCups = .25;
+            FiftyCups = 50;
             OneHundredCups = 100;
-             TenLemons = 19;
-             ThirtyLemons = 30;
-             SeventyFiveLemons = 75;
-             EightCupsOfSugar = 8;
-             TwentyCupsOfSugar = 20;
-             FortyEightCupsOfSugar = 48;
-             OneHundredIcecubes = 100;
-             TwoHundredFiftyIcecubes = 250;
-             FiveHundredIcecubes = 500;
-             TwentyFiveCupsCost = .90;
-             FiftyCupsCost = 1.64;
-             OneHundredCupsCost = 2.97;
-             TenLemonsCost = .55;
-             ThirtyLemonsCost = 2.26;
-             SeventyFiveLemonsCost = 4.24;
-             EightCupsOfSugarCost = .56;
-             TwentyCupsOfSugarCost = 1.63;
-             FortyEightCupsOfSugarCost = 3.30;
-             OneHundredIcecubesCost = .71;
-             TwoHundredFiftyIcecubesCost = 2.10;
-             FiveHundredIcecubesCost = 3.56;
+            TenLemons = 19;
+            ThirtyLemons = 30;
+            SeventyFiveLemons = 75;
+            EightCupsOfSugar = 8;
+            TwentyCupsOfSugar = 20;
+            FortyEightCupsOfSugar = 48;
+            OneHundredIcecubes = 100;
+            TwoHundredFiftyIcecubes = 250;
+            FiveHundredIcecubes = 500;
+            TwentyFiveCupsCost = .90;
+            FiftyCupsCost = 1.64;
+            OneHundredCupsCost = 2.97;
+            TenLemonsCost = .55;
+            ThirtyLemonsCost = 2.26;
+            SeventyFiveLemonsCost = 4.24;
+            EightCupsOfSugarCost = .56;
+            TwentyCupsOfSugarCost = 1.63;
+            FortyEightCupsOfSugarCost = 3.30;
+            OneHundredIcecubesCost = .71;
+            TwoHundredFiftyIcecubesCost = 2.10;
+            FiveHundredIcecubesCost = 3.56;
         }
 
 
         // member methods (CAN DO)
-        public double CashForCups(double cash, double cups)
-     {
-            cash = cash - cups;
-            return cash;
-
-     }
-     public double CashForLemons(double cash, double lemons)
-     {
-            cash = cash - lemons;
-            return cash;
-
-     }
-     public double CashForSugar(double cash, double sugar)
-     {
-            cash = cash - sugar;
-            return cash;
-
-     }
-
-     public double CashForIcecubes(double cash, double icecubes)
-     {
-            cash = cash - icecubes;
-            return cash;
-
-     }
-     public double CupsForCash(double PlayerCups, double cups)
-     {
-            PlayerCups = PlayerCups + cups;
-            return PlayerCups;
-
-     }
-     public double LemonsForCash(double PlayerLemons, double lemons)
-     {
-            PlayerLemons = PlayerLemons + lemons;
-            return PlayerLemons;
-
-     }
-     public double SugarForCash(double PlayerSugar, double sugar)
-     {
-            PlayerSugar = PlayerSugar + sugar;
-            return PlayerSugar;
-     }
-     public double IcecubesForCash(double PlayerIcecubes, double icecubes)
-     {
-            PlayerIcecubes = PlayerIcecubes + icecubes;
-            return PlayerIcecubes;
-
-     }
+        public void CashForCups(Player player, double PriceOfCups, double NumberOfCups)
+        {
+            player.cash = player.cash - PriceOfCups;
+            player.PlayerInventory.inventory[0] = player.PlayerInventory.inventory[0] + NumberOfCups;
 
 
+        }
+        public void CashForLemons(Player player, double PriceOfLemons, double NumberOfLemons)
+        {
+            player.cash = player.cash - PriceOfLemons;
+            player.PlayerInventory.inventory[1] = player.PlayerInventory.inventory[1] + NumberOfLemons;
+
+
+        }
+        public void CashForSugar(Player player, double PriceOfSugar, double NumberOfSugar)
+        {
+            player.cash = player.cash - PriceOfSugar;
+            player.PlayerInventory.inventory[2] = player.PlayerInventory.inventory[2] + NumberOfSugar;
+
+
+        }
+        public void CashForIcecubes(Player player, double PriceOfIcecubes, double NumberOfIcecubes)
+        {
+            player.cash = player.cash - PriceOfIcecubes;
+            player.PlayerInventory.inventory[3] = player.PlayerInventory.inventory[3] + NumberOfIcecubes;
+
+
+        }
+        public  void BuyingItems(Player player)
+        {
+            Console.WriteLine("What would like to buy? Cups, Lemons, Sugar, or Icecubes");
+            string answer = Console.ReadLine();
+            UserInterface.CheckInventory(player.PlayerInventory.inventory[0], player.PlayerInventory.inventory[1], player.PlayerInventory.inventory[2], player.PlayerInventory.inventory[3]);
+            switch (answer)
+            {
+                case "Cups":
+
+
+
+                default:
+                    break;
+
+            }
+        }
     }
 }

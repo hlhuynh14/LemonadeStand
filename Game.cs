@@ -8,22 +8,27 @@ namespace LemonadeStand
 {
     class Game
     {// member variables (HAS A)
-
+        public Human Player1;
+        public Store GameStore;
      // constructor
      public Game()
         {
-            Player Player1 = new Player;
-            Store GameStore = new Store;
+            Human Player1 = new Human();
+            Store GameStore = new Store();
             
         }
      // member methods (CAN DO)
      public void StartGame()
-        {
+     {
             for (int i = 0; i < 7; i++)
             {
-                Day day = new Day;
-                day.TimeOfDay
+                Day day = new Day();
+                day.ShowWeather();
+                UserInterface.CheckInventory(Player1.PlayerInventory.inventory[0], Player1.PlayerInventory.inventory[1], Player1.PlayerInventory.inventory[2], Player1.PlayerInventory.inventory[3]);
+                UserInterface.GoToStore(GameStore, Player1);
+                UserInterface.CheckInventory(Player1.PlayerInventory.inventory[0], Player1.PlayerInventory.inventory[1], Player1.PlayerInventory.inventory[2], Player1.PlayerInventory.inventory[3]);
+
             }
-        }
+     }  
     }
 }

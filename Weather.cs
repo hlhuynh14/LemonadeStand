@@ -8,8 +8,8 @@ namespace LemonadeStand
 {
     class Weather
     {// member variables (HAS A)
-        double ForecastTemperature;
-        string forecast;
+        public int ForecastTemperature;
+        public string forecast;
 
         // constructor
         public Weather()
@@ -19,7 +19,7 @@ namespace LemonadeStand
         }
 
         // member methods (CAN DO)
-        public double GenerateForecastTemperature()
+        public int GenerateForecastTemperature()
         {
             int MaxWeatherRange = 106;
             int MinWeatherRange = 59;
@@ -100,6 +100,7 @@ namespace LemonadeStand
                 {
                     return "Rainy";
                 }
+
             }
         }
     }

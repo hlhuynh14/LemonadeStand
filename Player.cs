@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Player
+    public class Player
     {// member variables (HAS A)
-        double cash;
+        public double cash;
+        public Inventory PlayerInventory;
+        public Recipe PlayerRecipe;
      // constructor
      public Player()
         {

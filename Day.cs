@@ -8,7 +8,8 @@ namespace LemonadeStand
 {
     class Day
     {// member variables (HAS A)
-    public double TimeOfDay;
+     public double TimeOfDay;
+        public Weather weather;
 
 
      // constructor
@@ -25,6 +26,18 @@ namespace LemonadeStand
        TimeOfDay = TimeOfDay + 1;
             return TimeOfDay;
      }
+        public void ShowWeather()
+        {
+            double NewTemperatureForecast = weather.ForecastTemperature;
+            string NewForecast = weather.forecast;
+            UserInterface.DisplayWeatherForecast(NewTemperatureForecast, NewForecast);
+        }
+        public void ShowActualWeather()
+        {
+            double NewTemperatureForecast = weather.GenerateActualTemperature(weather.ForecastTemperature);
+            string NewForecast = weather.GenerateActualWeather(weather.forecast);
+            UserInterface.DisplayWeatherForecast(NewTemperatureForecast, NewForecast);
+        }
     }
 }
 
