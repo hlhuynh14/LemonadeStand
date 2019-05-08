@@ -8,33 +8,61 @@ namespace LemonadeStand
 {
     class Store
     {// member variables (HAS A)
-        double TwentyFiveCups = .25;
-        double FiftyCups = 50;
-        double OneHundredCups = 100;
-        double TenLemons = 19;
-        double ThirtyLemons = 30;
-        double SeventyFiveLemons = 75;
-        double EightCupsOfSugar = 8;
-        double TwentyCupsOfSugar = 20;
-        double FortyEightCupsOfSugar = 48;
-        double OneHundredIcecubes = 100;
-        double TwoHundredFiftyIcecubes = 250;
-        double FiveHundredIcecubes = 500;
-        double TwentyFiveCupsCost = .90;
-        double FiftyCupsCost = 1.64;
-        double OneHundredCupsCost = 2.97;
-        double TenLemonsCost = .55;
-        double ThirtyLemonsCost = 2.26;
-        double SeventyFiveLemonsCost = 4.24;
-        double EightCupsOfSugarCost = .56;
-        double TwentyCupsOfSugarCost = 1.63;
-        double FortyEightCupsOfSugarCost = 3.30;
-        double OneHundredIcecubesCost = .71;
-        double TwoHundredFiftyIcecubesCost = 2.10;
-        double FiveHundredIcecubesCost = 3.56;
+        double TwentyFiveCups;
+        double FiftyCups;
+        double OneHundredCups;
+        double TenLemons;
+        double ThirtyLemons;
+        double SeventyFiveLemons;
+        double EightCupsOfSugar;
+        double TwentyCupsOfSugar;
+        double FortyEightCupsOfSugar;
+        double OneHundredIcecubes;
+        double TwoHundredFiftyIcecubes;
+        double FiveHundredIcecubes;
+        double TwentyFiveCupsCost;
+        double FiftyCupsCost ;
+        double OneHundredCupsCost;
+        double TenLemonsCost;
+        double ThirtyLemonsCost;
+        double SeventyFiveLemonsCost;
+        double EightCupsOfSugarCost;
+        double TwentyCupsOfSugarCost;
+        double FortyEightCupsOfSugarCost;
+        double OneHundredIcecubesCost;
+        double TwoHundredFiftyIcecubesCost;
+        double FiveHundredIcecubesCost;
 
 
         // constructor
+        public Store()
+        {
+             TwentyFiveCups = .25;
+             FiftyCups = 50;
+            OneHundredCups = 100;
+             TenLemons = 19;
+             ThirtyLemons = 30;
+             SeventyFiveLemons = 75;
+             EightCupsOfSugar = 8;
+             TwentyCupsOfSugar = 20;
+             FortyEightCupsOfSugar = 48;
+             OneHundredIcecubes = 100;
+             TwoHundredFiftyIcecubes = 250;
+             FiveHundredIcecubes = 500;
+             TwentyFiveCupsCost = .90;
+             FiftyCupsCost = 1.64;
+             OneHundredCupsCost = 2.97;
+             TenLemonsCost = .55;
+             ThirtyLemonsCost = 2.26;
+             SeventyFiveLemonsCost = 4.24;
+             EightCupsOfSugarCost = .56;
+             TwentyCupsOfSugarCost = 1.63;
+             FortyEightCupsOfSugarCost = 3.30;
+             OneHundredIcecubesCost = .71;
+             TwoHundredFiftyIcecubesCost = 2.10;
+             FiveHundredIcecubesCost = 3.56;
+        }
+
 
         // member methods (CAN DO)
         public double CashForCups(double cash, double cups)

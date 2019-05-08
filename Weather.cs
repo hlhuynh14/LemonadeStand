@@ -32,7 +32,7 @@ namespace LemonadeStand
         public double GenerateActualTemperature( int ForecastTemperature)
         { int WeatherDeviation = 10;
             Random rnd = new Random();
-            int ActualTemperatureChance = rnd.Next((ForecastTemperature - WeatherDeviation), (ForecastTemperature + WeatherDeviation);
+            int ActualTemperatureChance = rnd.Next((ForecastTemperature - WeatherDeviation), (ForecastTemperature + WeatherDeviation));
             return ActualTemperatureChance;
         }
 

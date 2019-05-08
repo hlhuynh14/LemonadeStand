@@ -10,7 +10,20 @@ namespace LemonadeStand
     {// member variables (HAS A)
 
      // constructor
-
+     public Game()
+        {
+            Player Player1 = new Player;
+            Store GameStore = new Store;
+            
+        }
      // member methods (CAN DO)
+     public void StartGame()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                Day day = new Day;
+                day.TimeOfDay
+            }
+        }
     }
 }

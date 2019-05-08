@@ -8,13 +8,14 @@ namespace LemonadeStand
 {
     class Day
     {// member variables (HAS A)
-    double TimeOfDay;
+    public double TimeOfDay;
+
 
      // constructor
         
      public Day()
      { TimeOfDay = 9;
-            Weather WeatherToday = new Weather();
+            Weather weather = new Weather();
 
         }
 
