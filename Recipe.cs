@@ -12,7 +12,7 @@ namespace LemonadeStand
         // constructor
         public Recipe()
         {
-            List<double> recipe = new List<double> { 6, 4, 4, 25 };
+             recipe = new List<double> { 6, 4, 4, .25 };
 
         }
 
@@ -47,9 +47,9 @@ namespace LemonadeStand
                 Console.WriteLine("Please enter a number next time or you will have start all over!");
               NewRecipe(player);
             }
-            int PricePerCup;
-            Console.WriteLine("What would you like to change the price per cup to be?");
-            int.TryParse(Console.ReadLine(), out PricePerCup);
+            double PricePerCup;
+            Console.WriteLine("What would you like to change the price per cup to be? Too high and customers wont buy!" );
+            double.TryParse(Console.ReadLine(), out PricePerCup);
             if (PricePerCup == 0)
             {
                 Console.WriteLine("Please enter a number next time or you will have start all over!");

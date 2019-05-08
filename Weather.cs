@@ -23,6 +23,7 @@ namespace LemonadeStand
         {
             int MaxWeatherRange = 106;
             int MinWeatherRange = 59;
+            
 
             Random rnd = new Random();
             int TemperatureChance = rnd.Next(MinWeatherRange, MaxWeatherRange);
@@ -32,7 +33,7 @@ namespace LemonadeStand
         public double GenerateActualTemperature( int ForecastTemperature)
         { int WeatherDeviation = 10;
             Random rnd = new Random();
-            int ActualTemperatureChance = rnd.Next((ForecastTemperature - WeatherDeviation), (ForecastTemperature + WeatherDeviation));
+            double ActualTemperatureChance = rnd.Next((ForecastTemperature - WeatherDeviation), (ForecastTemperature + WeatherDeviation));
             return ActualTemperatureChance;
         }
 

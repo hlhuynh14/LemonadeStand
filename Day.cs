@@ -15,8 +15,9 @@ namespace LemonadeStand
      // constructor
         
      public Day()
-     { TimeOfDay = 9;
-            Weather weather = new Weather();
+     {
+            TimeOfDay = 9;
+            weather = new Weather();
 
         }
 
@@ -28,7 +29,7 @@ namespace LemonadeStand
      }
         public void ShowWeather()
         {
-            double NewTemperatureForecast = weather.ForecastTemperature;
+            int NewTemperatureForecast = weather.ForecastTemperature;
             string NewForecast = weather.forecast;
             UserInterface.DisplayWeatherForecast(NewTemperatureForecast, NewForecast);
         }
@@ -40,5 +41,10 @@ namespace LemonadeStand
         }
     }
 }
+
+
+
+
+
 
 

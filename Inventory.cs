@@ -12,7 +12,7 @@ namespace LemonadeStand
      // constructor
      public Inventory()
         {
-         List<double> inventory = new List<double> { 0, 0, 0, 0 };
+          inventory = new List<double> { 0, 0, 0, 0 };
 
         }
      // member methods (CAN DO)

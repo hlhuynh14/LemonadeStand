@@ -20,7 +20,7 @@ namespace LemonadeStand
             LemonFlavorModifier = -30;
              SweetToothModifier = 20;
             CoolnessModifier = 25;
-             PriceModifier = 25;
+             PriceModifier = 50;
             ChanceToBuy = GenerateChanceToBuy();
             MaxPrice = GetMaxPrice();
 
@@ -30,7 +30,7 @@ namespace LemonadeStand
      public double GenerateChanceToBuy()
         {
             Random rnd = new Random();
-            double  ChanceToBuy = rnd.Next(0, 51);
+            double  ChanceToBuy = rnd.Next(0, 101);
             return ChanceToBuy;
         }
      public double GetWeatherModifier(string ActualWeather, double ActualTemperature)

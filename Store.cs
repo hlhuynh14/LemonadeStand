@@ -37,10 +37,10 @@ namespace LemonadeStand
         // constructor
         public Store()
         {
-            TwentyFiveCups = .25;
+            TwentyFiveCups = 25;
             FiftyCups = 50;
             OneHundredCups = 100;
-            TenLemons = 19;
+            TenLemons = 10;
             ThirtyLemons = 30;
             SeventyFiveLemons = 75;
             EightCupsOfSugar = 8;
@@ -95,18 +95,113 @@ namespace LemonadeStand
         }
         public  void BuyingItems(Player player)
         {
-            Console.WriteLine("What would like to buy? Cups, Lemons, Sugar, or Icecubes");
+            Console.WriteLine("What would like to buy? cups, lemons, sugar, iceCubes or enter exit to exit the store.");
             string answer = Console.ReadLine();
-            UserInterface.CheckInventory(player.PlayerInventory.inventory[0], player.PlayerInventory.inventory[1], player.PlayerInventory.inventory[2], player.PlayerInventory.inventory[3]);
             switch (answer)
             {
-                case "Cups":
-
-
-
+                case "cups":
+                    double cups = UserInterface.AskHowMany("cups", TwentyFiveCups, TwentyFiveCupsCost, FiftyCups, FiftyCupsCost, OneHundredCups, OneHundredCupsCost);
+                    HowManyCups(player, cups, player.cash);
+                    UserInterface.CheckInventory(player.PlayerInventory.inventory[0], player.PlayerInventory.inventory[1], player.PlayerInventory.inventory[2], player.PlayerInventory.inventory[3]);
+                    UserInterface.DisplayCash(player);
+                    BuyingItems(player);
+                    break;
+                case "lemons":
+                    double lemons = UserInterface.AskHowMany("lemons", TenLemons, TenLemonsCost, ThirtyLemons, ThirtyLemonsCost, SeventyFiveLemons, SeventyFiveLemonsCost);
+                    HowManyLemons(player, lemons, player.cash);
+                    UserInterface.CheckInventory(player.PlayerInventory.inventory[0], player.PlayerInventory.inventory[1], player.PlayerInventory.inventory[2], player.PlayerInventory.inventory[3]);
+                    UserInterface.DisplayCash(player);
+                    BuyingItems(player);
+                    break;
+                case "sugar":
+                    double cupsofsugar = UserInterface.AskHowMany("cups of sugar", EightCupsOfSugar, EightCupsOfSugarCost, TwentyCupsOfSugar, TwentyCupsOfSugarCost, FortyEightCupsOfSugar, FortyEightCupsOfSugarCost);
+                    HowManySugar(player, cupsofsugar, player.cash);
+                    UserInterface.CheckInventory(player.PlayerInventory.inventory[0], player.PlayerInventory.inventory[1], player.PlayerInventory.inventory[2], player.PlayerInventory.inventory[3]);
+                    UserInterface.DisplayCash(player);
+                    BuyingItems(player);
+                    break;
+                case "icecubes":
+                    double icecubes = UserInterface.AskHowMany("icecubes", OneHundredIcecubes, OneHundredIcecubesCost, TwoHundredFiftyIcecubes, TwoHundredFiftyIcecubesCost, FiveHundredIcecubes, FiveHundredIcecubesCost);
+                    HowManyIcecubes(player, icecubes, player.cash);
+                    UserInterface.CheckInventory(player.PlayerInventory.inventory[0], player.PlayerInventory.inventory[1], player.PlayerInventory.inventory[2], player.PlayerInventory.inventory[3]);
+                    UserInterface.DisplayCash(player);
+                    BuyingItems(player);
+                    break;
+                case "exit":
+                    break;
                 default:
+                    Console.WriteLine("You enter a wrong input, please try again!");
+                    BuyingItems(player);
                     break;
 
+            }
+        }
+        public void HowManyCups(Player player, double cups, double cash)
+        {
+            switch (cups)
+            {
+                case 25:
+                    CashForCups(player, TwentyFiveCupsCost, TwentyFiveCups);
+                    break;
+                case 50:
+                    CashForCups(player, FiftyCupsCost, FiftyCups);
+                    break;
+                case 100:
+                    CashForCups(player, OneHundredCupsCost, OneHundredCups);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public void HowManyLemons(Player player, double lemons, double cash)
+        {
+            switch (lemons)
+            {
+                case 10:
+                    CashForLemons(player, TenLemonsCost, TenLemons);
+                    break;
+                case 30:
+                    CashForLemons(player, ThirtyLemonsCost, ThirtyLemons);
+                    break;
+                case 75:
+                    CashForLemons(player, SeventyFiveLemonsCost, SeventyFiveLemons);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public void HowManySugar(Player player, double sugar, double cash)
+        {
+            switch (sugar)
+            {
+                case 8:
+                    CashForSugar(player, EightCupsOfSugarCost, EightCupsOfSugar);
+                    break;
+                case 20:
+                    CashForSugar(player, TwentyCupsOfSugarCost, TwentyCupsOfSugar);
+                    break;
+                case 48:
+                    CashForSugar(player, FortyEightCupsOfSugarCost, FortyEightCupsOfSugar);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public void HowManyIcecubes(Player player, double icecubes, double cash)
+        {
+            switch (icecubes)
+            {
+                case 100:
+                    CashForIcecubes(player, OneHundredIcecubesCost, OneHundredIcecubes);
+                    break;
+                case 250:
+                    CashForIcecubes(player, TwoHundredFiftyIcecubesCost, TwoHundredFiftyIcecubes);
+                    break;
+                case 500:
+                    CashForIcecubes(player, FiveHundredIcecubesCost, FiveHundredIcecubes);
+                    break;
+                default:
+                    break;
             }
         }
     }

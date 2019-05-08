@@ -15,13 +15,16 @@ namespace LemonadeStand
      public Player()
         {
             cash = 20;
-            Inventory PlayerInventory = new Inventory();
-            Recipe PlayerRecipe = new Recipe();
+             PlayerInventory = new Inventory();
+             PlayerRecipe = new Recipe();
 
         }
 
      // member methods (CAN DO)
-
+     public void AddMoney(double price)
+     {
+            cash = cash + price
+     }
      
     }
 
