@@ -103,30 +103,22 @@ namespace LemonadeStand
                 case "cups":
                     double cups = UserInterface.AskHowMany("cups", twentyFiveCups, twentyFiveCupsCost, fiftyCups, fiftyCupsCost, oneHundredCups, oneHundredCupsCost);
                     HowManyCups(player, cups);
-                    UserInterface.CheckInventory(player.playerInventory.numberOfCups, player.playerInventory.numberOfLemons, player.playerInventory.numberOfSugar, player.playerInventory.numberOfIcecubes);
-                    UserInterface.DisplayCash(player);
-                    BuyingItems(player);
+                    LoopStore(player);
                     break;
                 case "lemons":
                     double lemons = UserInterface.AskHowMany("lemons", tenLemons, tenLemonsCost, thirtyLemons, thirtyLemonsCost, seventyFiveLemons, seventyFiveLemonsCost);
                     HowManyLemons(player, lemons);
-                    UserInterface.CheckInventory(player.playerInventory.numberOfCups, player.playerInventory.numberOfLemons, player.playerInventory.numberOfSugar, player.playerInventory.numberOfIcecubes);
-                    UserInterface.DisplayCash(player);
-                    BuyingItems(player);
+                    LoopStore(player);
                     break;
                 case "sugar":
                     double cupsofsugar = UserInterface.AskHowMany("cups of sugar", eightCupsOfSugar, eightCupsOfSugarCost, twentyCupsOfSugar, twentyCupsOfSugarCost, fortyEightCupsOfSugar, fortyEightCupsOfSugarCost);
                     HowManySugar(player, cupsofsugar);
-                    UserInterface.CheckInventory(player.playerInventory.numberOfCups, player.playerInventory.numberOfLemons, player.playerInventory.numberOfSugar, player.playerInventory.numberOfIcecubes);
-                    UserInterface.DisplayCash(player);
-                    BuyingItems(player);
+                    LoopStore(player);
                     break;
                 case "icecubes":
                     double icecubes = UserInterface.AskHowMany("icecubes", oneHundredIcecubes, oneHundredIcecubesCost, twoHundredFiftyIcecubes, twoHundredFiftyIcecubesCost, fiveHundredIcecubes, fiveHundredIcecubesCost);
                     HowManyIcecubes(player, icecubes);
-                    UserInterface.CheckInventory(player.playerInventory.numberOfCups, player.playerInventory.numberOfLemons, player.playerInventory.numberOfSugar, player.playerInventory.numberOfIcecubes);
-                    UserInterface.DisplayCash(player);
-                    BuyingItems(player);
+                    LoopStore(player);
                     break;
                 case "exit":
                     break;
@@ -204,6 +196,12 @@ namespace LemonadeStand
                 default:
                     break;
             }
+        }
+        private void LoopStore(Player player)
+        {
+            UserInterface.CheckInventory(player.playerInventory.numberOfCups, player.playerInventory.numberOfLemons, player.playerInventory.numberOfSugar, player.playerInventory.numberOfIcecubes);
+            UserInterface.DisplayCash(player);
+            BuyingItems(player);
         }
     }
 }

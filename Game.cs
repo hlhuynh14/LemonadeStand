@@ -36,6 +36,7 @@ namespace LemonadeStand
                 UserInterface.CheckInventory(player1.playerInventory.numberOfCups, player1.playerInventory.numberOfLemons, player1.playerInventory.numberOfSugar, player1.playerInventory.numberOfIcecubes);
                 UserInterface.ShowRecipe(player1.playerRecipe.lemonRecipeNumber, player1.playerRecipe.sugarRecipeNumber, player1.playerRecipe.icecubeRecipeNumber, player1.playerRecipe.priceRecipeNumber);
                 UserInterface.AlterRecipe(player1);
+                NewPitcher(player1);
                 double cashUsed = player1.cash;
                 double actualCustomer = 0;
                 day.ShowActualWeather();
@@ -125,7 +126,7 @@ namespace LemonadeStand
 
         public bool BuyIt( double chanceTobuy)
         {
-            if (chanceTobuy > 95)
+            if (chanceTobuy > 65)
             {
                 return true;
             }
