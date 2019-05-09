@@ -8,88 +8,89 @@ namespace LemonadeStand
 {
     public class Store
     {// member variables (HAS A)
-        double TwentyFiveCups;
-        double FiftyCups;
-        double OneHundredCups;
-        double TenLemons;
-        double ThirtyLemons;
-        double SeventyFiveLemons;
-        double EightCupsOfSugar;
-        double TwentyCupsOfSugar;
-        double FortyEightCupsOfSugar;
-        double OneHundredIcecubes;
-        double TwoHundredFiftyIcecubes;
-        double FiveHundredIcecubes;
-        double TwentyFiveCupsCost;
-        double FiftyCupsCost;
-        double OneHundredCupsCost;
-        double TenLemonsCost;
-        double ThirtyLemonsCost;
-        double SeventyFiveLemonsCost;
-        double EightCupsOfSugarCost;
-        double TwentyCupsOfSugarCost;
-        double FortyEightCupsOfSugarCost;
-        double OneHundredIcecubesCost;
-        double TwoHundredFiftyIcecubesCost;
-        double FiveHundredIcecubesCost;
+        double twentyFiveCups;
+        double fiftyCups;
+        double oneHundredCups;
+        double tenLemons;
+        double thirtyLemons;
+        double seventyFiveLemons;
+        double eightCupsOfSugar;
+        double twentyCupsOfSugar;
+        double fortyEightCupsOfSugar;
+        double oneHundredIcecubes;
+        double twoHundredFiftyIcecubes;
+        double fiveHundredIcecubes;
+        double twentyFiveCupsCost;
+        double fiftyCupsCost;
+        double oneHundredCupsCost;
+        double tenLemonsCost;
+        double thirtyLemonsCost;
+        double seventyFiveLemonsCost;
+        double eightCupsOfSugarCost;
+        double twentyCupsOfSugarCost;
+        double fortyEightCupsOfSugarCost;
+        double oneHundredIcecubesCost;
+        double twoHundredFiftyIcecubesCost;
+        double fiveHundredIcecubesCost;
 
 
         // constructor
         public Store()
         {
-            TwentyFiveCups = 25;
-            FiftyCups = 50;
-            OneHundredCups = 100;
-            TenLemons = 10;
-            ThirtyLemons = 30;
-            SeventyFiveLemons = 75;
-            EightCupsOfSugar = 8;
-            TwentyCupsOfSugar = 20;
-            FortyEightCupsOfSugar = 48;
-            OneHundredIcecubes = 100;
-            TwoHundredFiftyIcecubes = 250;
-            FiveHundredIcecubes = 500;
-            TwentyFiveCupsCost = .90;
-            FiftyCupsCost = 1.64;
-            OneHundredCupsCost = 2.97;
-            TenLemonsCost = .55;
-            ThirtyLemonsCost = 2.26;
-            SeventyFiveLemonsCost = 4.24;
-            EightCupsOfSugarCost = .56;
-            TwentyCupsOfSugarCost = 1.63;
-            FortyEightCupsOfSugarCost = 3.30;
-            OneHundredIcecubesCost = .71;
-            TwoHundredFiftyIcecubesCost = 2.10;
-            FiveHundredIcecubesCost = 3.56;
+            twentyFiveCups = 25;
+            fiftyCups = 50;
+            oneHundredCups = 100;
+            tenLemons = 10;
+            thirtyLemons = 30;
+            seventyFiveLemons = 75;
+            eightCupsOfSugar = 8;
+            twentyCupsOfSugar = 20;
+            fortyEightCupsOfSugar = 48;
+            oneHundredIcecubes = 100;
+            twoHundredFiftyIcecubes = 250;
+            fiveHundredIcecubes = 500;
+            twentyFiveCupsCost = .90;
+            fiftyCupsCost = 1.64;
+            oneHundredCupsCost = 2.97;
+            tenLemonsCost = .55;
+            thirtyLemonsCost = 2.26;
+            seventyFiveLemonsCost = 4.24;
+            eightCupsOfSugarCost = .56;
+            twentyCupsOfSugarCost = 1.63;
+            fortyEightCupsOfSugarCost = 3.30;
+            oneHundredIcecubesCost = .71;
+            twoHundredFiftyIcecubesCost = 2.10;
+            fiveHundredIcecubesCost = 3.56;
         }
 
 
         // member methods (CAN DO)
-        public void CashForCups(Player player, double PriceOfCups, double NumberOfCups)
+
+        private void CashForCups(Player player, double priceOfCups, double numberOfCupsAdded )
         {
-            player.cash = player.cash - PriceOfCups;
-            player.PlayerInventory.inventory[0] = player.PlayerInventory.inventory[0] + NumberOfCups;
+            player.cash = player.cash - priceOfCups;
+            player.playerInventory.numberOfCups = player.playerInventory.numberOfCups + numberOfCupsAdded;
 
 
         }
-        public void CashForLemons(Player player, double PriceOfLemons, double NumberOfLemons)
+        private void CashForLemons(Player player, double PriceOfLemons, double NumberOfLemonsAdded)
         {
             player.cash = player.cash - PriceOfLemons;
-            player.PlayerInventory.inventory[1] = player.PlayerInventory.inventory[1] + NumberOfLemons;
+            player.playerInventory.numberOfLemons = player.playerInventory.numberOfLemons + NumberOfLemonsAdded;
 
 
         }
-        public void CashForSugar(Player player, double PriceOfSugar, double NumberOfSugar)
+        private void CashForSugar(Player player, double PriceOfSugar, double NumberOfSugarAdded)
         {
             player.cash = player.cash - PriceOfSugar;
-            player.PlayerInventory.inventory[2] = player.PlayerInventory.inventory[2] + NumberOfSugar;
+            player.playerInventory.numberOfSugar = player.playerInventory.numberOfSugar + NumberOfSugarAdded;
 
 
         }
-        public void CashForIcecubes(Player player, double PriceOfIcecubes, double NumberOfIcecubes)
+        private void CashForIcecubes(Player player, double PriceOfIcecubes, double NumberOfIcecubesAdded)
         {
             player.cash = player.cash - PriceOfIcecubes;
-            player.PlayerInventory.inventory[3] = player.PlayerInventory.inventory[3] + NumberOfIcecubes;
+            player.playerInventory.numberOfIcecubes = player.playerInventory.numberOfIcecubes + NumberOfIcecubesAdded;
 
 
         }
@@ -100,30 +101,30 @@ namespace LemonadeStand
             switch (answer)
             {
                 case "cups":
-                    double cups = UserInterface.AskHowMany("cups", TwentyFiveCups, TwentyFiveCupsCost, FiftyCups, FiftyCupsCost, OneHundredCups, OneHundredCupsCost);
-                    HowManyCups(player, cups, player.cash);
-                    UserInterface.CheckInventory(player.PlayerInventory.inventory[0], player.PlayerInventory.inventory[1], player.PlayerInventory.inventory[2], player.PlayerInventory.inventory[3]);
+                    double cups = UserInterface.AskHowMany("cups", twentyFiveCups, twentyFiveCupsCost, fiftyCups, fiftyCupsCost, oneHundredCups, oneHundredCupsCost);
+                    HowManyCups(player, cups);
+                    UserInterface.CheckInventory(player.playerInventory.numberOfCups, player.playerInventory.numberOfLemons, player.playerInventory.numberOfSugar, player.playerInventory.numberOfIcecubes);
                     UserInterface.DisplayCash(player);
                     BuyingItems(player);
                     break;
                 case "lemons":
-                    double lemons = UserInterface.AskHowMany("lemons", TenLemons, TenLemonsCost, ThirtyLemons, ThirtyLemonsCost, SeventyFiveLemons, SeventyFiveLemonsCost);
-                    HowManyLemons(player, lemons, player.cash);
-                    UserInterface.CheckInventory(player.PlayerInventory.inventory[0], player.PlayerInventory.inventory[1], player.PlayerInventory.inventory[2], player.PlayerInventory.inventory[3]);
+                    double lemons = UserInterface.AskHowMany("lemons", tenLemons, tenLemonsCost, thirtyLemons, thirtyLemonsCost, seventyFiveLemons, seventyFiveLemonsCost);
+                    HowManyLemons(player, lemons);
+                    UserInterface.CheckInventory(player.playerInventory.numberOfCups, player.playerInventory.numberOfLemons, player.playerInventory.numberOfSugar, player.playerInventory.numberOfIcecubes);
                     UserInterface.DisplayCash(player);
                     BuyingItems(player);
                     break;
                 case "sugar":
-                    double cupsofsugar = UserInterface.AskHowMany("cups of sugar", EightCupsOfSugar, EightCupsOfSugarCost, TwentyCupsOfSugar, TwentyCupsOfSugarCost, FortyEightCupsOfSugar, FortyEightCupsOfSugarCost);
-                    HowManySugar(player, cupsofsugar, player.cash);
-                    UserInterface.CheckInventory(player.PlayerInventory.inventory[0], player.PlayerInventory.inventory[1], player.PlayerInventory.inventory[2], player.PlayerInventory.inventory[3]);
+                    double cupsofsugar = UserInterface.AskHowMany("cups of sugar", eightCupsOfSugar, eightCupsOfSugarCost, twentyCupsOfSugar, twentyCupsOfSugarCost, fortyEightCupsOfSugar, fortyEightCupsOfSugarCost);
+                    HowManySugar(player, cupsofsugar);
+                    UserInterface.CheckInventory(player.playerInventory.numberOfCups, player.playerInventory.numberOfLemons, player.playerInventory.numberOfSugar, player.playerInventory.numberOfIcecubes);
                     UserInterface.DisplayCash(player);
                     BuyingItems(player);
                     break;
                 case "icecubes":
-                    double icecubes = UserInterface.AskHowMany("icecubes", OneHundredIcecubes, OneHundredIcecubesCost, TwoHundredFiftyIcecubes, TwoHundredFiftyIcecubesCost, FiveHundredIcecubes, FiveHundredIcecubesCost);
-                    HowManyIcecubes(player, icecubes, player.cash);
-                    UserInterface.CheckInventory(player.PlayerInventory.inventory[0], player.PlayerInventory.inventory[1], player.PlayerInventory.inventory[2], player.PlayerInventory.inventory[3]);
+                    double icecubes = UserInterface.AskHowMany("icecubes", oneHundredIcecubes, oneHundredIcecubesCost, twoHundredFiftyIcecubes, twoHundredFiftyIcecubesCost, fiveHundredIcecubes, fiveHundredIcecubesCost);
+                    HowManyIcecubes(player, icecubes);
+                    UserInterface.CheckInventory(player.playerInventory.numberOfCups, player.playerInventory.numberOfLemons, player.playerInventory.numberOfSugar, player.playerInventory.numberOfIcecubes);
                     UserInterface.DisplayCash(player);
                     BuyingItems(player);
                     break;
@@ -136,69 +137,69 @@ namespace LemonadeStand
 
             }
         }
-        public void HowManyCups(Player player, double cups, double cash)
+        private void HowManyCups(Player player, double cups)
         {
             switch (cups)
             {
                 case 25:
-                    CashForCups(player, TwentyFiveCupsCost, TwentyFiveCups);
+                    CashForCups(player, twentyFiveCupsCost, twentyFiveCups);
                     break;
                 case 50:
-                    CashForCups(player, FiftyCupsCost, FiftyCups);
+                    CashForCups(player, fiftyCupsCost, fiftyCups);
                     break;
                 case 100:
-                    CashForCups(player, OneHundredCupsCost, OneHundredCups);
+                    CashForCups(player, oneHundredCupsCost, oneHundredCups);
                     break;
                 default:
                     break;
             }
         }
-        public void HowManyLemons(Player player, double lemons, double cash)
+        private void HowManyLemons(Player player, double lemons)
         {
             switch (lemons)
             {
                 case 10:
-                    CashForLemons(player, TenLemonsCost, TenLemons);
+                    CashForLemons(player, tenLemonsCost, tenLemons);
                     break;
                 case 30:
-                    CashForLemons(player, ThirtyLemonsCost, ThirtyLemons);
+                    CashForLemons(player, thirtyLemonsCost, thirtyLemons);
                     break;
                 case 75:
-                    CashForLemons(player, SeventyFiveLemonsCost, SeventyFiveLemons);
+                    CashForLemons(player, seventyFiveLemonsCost, seventyFiveLemons);
                     break;
                 default:
                     break;
             }
         }
-        public void HowManySugar(Player player, double sugar, double cash)
+        private void HowManySugar(Player player, double sugar)
         {
             switch (sugar)
             {
                 case 8:
-                    CashForSugar(player, EightCupsOfSugarCost, EightCupsOfSugar);
+                    CashForSugar(player, eightCupsOfSugarCost, eightCupsOfSugar);
                     break;
                 case 20:
-                    CashForSugar(player, TwentyCupsOfSugarCost, TwentyCupsOfSugar);
+                    CashForSugar(player, twentyCupsOfSugarCost, twentyCupsOfSugar);
                     break;
                 case 48:
-                    CashForSugar(player, FortyEightCupsOfSugarCost, FortyEightCupsOfSugar);
+                    CashForSugar(player, fortyEightCupsOfSugarCost, fortyEightCupsOfSugar);
                     break;
                 default:
                     break;
             }
         }
-        public void HowManyIcecubes(Player player, double icecubes, double cash)
+        public void HowManyIcecubes(Player player, double icecubes)
         {
             switch (icecubes)
             {
                 case 100:
-                    CashForIcecubes(player, OneHundredIcecubesCost, OneHundredIcecubes);
+                    CashForIcecubes(player, oneHundredIcecubesCost, oneHundredIcecubes);
                     break;
                 case 250:
-                    CashForIcecubes(player, TwoHundredFiftyIcecubesCost, TwoHundredFiftyIcecubes);
+                    CashForIcecubes(player, twoHundredFiftyIcecubesCost, twoHundredFiftyIcecubes);
                     break;
                 case 500:
-                    CashForIcecubes(player, FiveHundredIcecubesCost, FiveHundredIcecubes);
+                    CashForIcecubes(player, fiveHundredIcecubesCost, fiveHundredIcecubes);
                     break;
                 default:
                     break;

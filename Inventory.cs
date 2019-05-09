@@ -8,11 +8,19 @@ namespace LemonadeStand
 {
     public class Inventory
     {// member variables (HAS A)
-       public List<double> inventory;
-     // constructor
-     public Inventory()
+        public double numberOfCups;
+        public double numberOfLemons;
+        public double numberOfSugar;
+        public double numberOfIcecubes;
+
+        // constructor
+        public Inventory()
         {
-          inventory = new List<double> { 0, 0, 0, 0 };
+            numberOfCups = 0;
+            numberOfLemons = 0;
+            numberOfSugar = 0;
+            numberOfIcecubes = 0;
+          
 
         }
      // member methods (CAN DO)

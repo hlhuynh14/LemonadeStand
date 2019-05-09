@@ -8,45 +8,50 @@ namespace LemonadeStand
 {
     class Weather
     {// member variables (HAS A)
-        public int ForecastTemperature;
+        public int forecastTemperature;
         public string forecast;
+        public int actualTemperature;
+        public string actualForecast;
 
         // constructor
         public Weather()
         {
-            ForecastTemperature = GenerateForecastTemperature();
+            forecastTemperature = GenerateForecastTemperature();
             forecast = GenerateForecast();
+            actualTemperature = GenerateActualTemperature(forecastTemperature);
+            actualForecast = GenerateActualWeather(forecast);
+
         }
 
         // member methods (CAN DO)
-        public int GenerateForecastTemperature()
+        private int GenerateForecastTemperature()
         {
-            int MaxWeatherRange = 106;
-            int MinWeatherRange = 59;
+            int maxWeatherRange = 106;
+            int minWeatherRange = 59;
             
 
             Random rnd = new Random();
-            int TemperatureChance = rnd.Next(MinWeatherRange, MaxWeatherRange);
-            return TemperatureChance;
+            int temperatureChance = rnd.Next(minWeatherRange, maxWeatherRange);
+            return temperatureChance;
 
         }
-        public double GenerateActualTemperature( int ForecastTemperature)
-        { int WeatherDeviation = 10;
+        private int GenerateActualTemperature( int forecastTemperature)
+        { int weatherDeviation = 5;
             Random rnd = new Random();
-            double ActualTemperatureChance = rnd.Next((ForecastTemperature - WeatherDeviation), (ForecastTemperature + WeatherDeviation));
-            return ActualTemperatureChance;
+            int actualTemperatureChance = rnd.Next((forecastTemperature - weatherDeviation), (forecastTemperature + weatherDeviation));
+            return actualTemperatureChance;
         }
 
-        public string GenerateForecast()
+        private string GenerateForecast()
         {
             Random rnd = new Random();
-            double WeatherChance = rnd.Next(1, 4);
+            double weatherChance = rnd.Next(1, 4);
             
-            if (WeatherChance == 1)
+            if (weatherChance == 1)
             {
                 return "Rain";
             }
-            else if (WeatherChance == 2)
+            else if (weatherChance == 2)
             {
                 return "Sunny";
             }
@@ -56,13 +61,13 @@ namespace LemonadeStand
             }
 
         }
-        public string GenerateActualWeather( string forecast)
+        private string GenerateActualWeather( string forecast)
         {
             if (forecast == "Rain")
             {
                 Random rnd = new Random();
-                double WeatherChanceRain = rnd.Next(1, 3);
-                if (WeatherChanceRain == 2)
+                double weatherChanceRain = rnd.Next(1, 3);
+                if (weatherChanceRain == 2)
                 {
                     return "Rain";
                 }
@@ -75,8 +80,8 @@ namespace LemonadeStand
             else if (forecast == "Sunny")
             {
                 Random rnd = new Random();
-                double WeatherChanceSunny = rnd.Next(1, 3);
-                if (WeatherChanceSunny == 2)
+                double weatherChanceSunny = rnd.Next(1, 3);
+                if (weatherChanceSunny == 2)
                 {
                     return "Sunny";
                 }
@@ -88,12 +93,12 @@ namespace LemonadeStand
             else
             {
                 Random rnd = new Random();
-                double WeatherChanceCloudy = rnd.Next(1, 4);
-                if (WeatherChanceCloudy == 3)
+                double weatherChanceCloudy = rnd.Next(1, 4);
+                if (weatherChanceCloudy == 3)
                 {
                     return "Cloudy";
                 }
-                else if (WeatherChanceCloudy == 2)
+                else if (weatherChanceCloudy == 2)
                 {
                     return "Sunny";
                 }

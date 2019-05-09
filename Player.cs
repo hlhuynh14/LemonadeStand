@@ -9,16 +9,16 @@ namespace LemonadeStand
     public class Player
     {// member variables (HAS A)
         public double cash;
-        public Inventory PlayerInventory;
-        public Recipe PlayerRecipe;
+        public Inventory playerInventory;
+        public Recipe playerRecipe;
      // constructor
      public Player()
-        {
+     {
             cash = 20;
-             PlayerInventory = new Inventory();
-             PlayerRecipe = new Recipe();
+             playerInventory = new Inventory();
+             playerRecipe = new Recipe();
 
-        }
+     }
 
      // member methods (CAN DO)
      public void AddMoney(double price)

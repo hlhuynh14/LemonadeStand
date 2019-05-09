@@ -8,91 +8,82 @@ namespace LemonadeStand
 {
     class Game
     {// member variables (HAS A)
-        public Human Player1;
-        public Store GameStore;
-        public double pitcher;
+        
+        private Human player1;
+        private Store gameStore;
+        private double pitcher;
         // constructor
         public Game()
         {
-            Player1 = new Human();
-            GameStore = new Store();
+            player1 = new Human();
+            gameStore = new Store();
             pitcher = 32;
 
         }
         // member methods (CAN DO)
         public void StartGame()
         {
-            for (int i = 0; i < 8; i++)
+            
+            UserInterface.ShowRules();
+            double gameDays = UserInterface.AskGameDays();
+            for (int i = 1; i <= gameDays; i++)
             {
-                double StartingCash = Player1.cash;
+                double startingCash = player1.cash;
                 Day day = new Day();
                 day.ShowWeather();
-                UserInterface.CheckInventory(Player1.PlayerInventory.inventory[0], Player1.PlayerInventory.inventory[1], Player1.PlayerInventory.inventory[2], Player1.PlayerInventory.inventory[3]);
-                UserInterface.GoToStore(GameStore, Player1);
-                UserInterface.CheckInventory(Player1.PlayerInventory.inventory[0], Player1.PlayerInventory.inventory[1], Player1.PlayerInventory.inventory[2], Player1.PlayerInventory.inventory[3]);
-                double CashUsed = Player1.cash;
-                double ActualCustomer = 0;
+                UserInterface.CheckInventory(player1.playerInventory.numberOfCups, player1.playerInventory.numberOfLemons, player1.playerInventory.numberOfSugar, player1.playerInventory.numberOfIcecubes);
+                UserInterface.GoToStore(gameStore, player1);
+                UserInterface.CheckInventory(player1.playerInventory.numberOfCups, player1.playerInventory.numberOfLemons, player1.playerInventory.numberOfSugar, player1.playerInventory.numberOfIcecubes);
+                UserInterface.ShowRecipe(player1.playerRecipe.lemonRecipeNumber, player1.playerRecipe.sugarRecipeNumber, player1.playerRecipe.icecubeRecipeNumber, player1.playerRecipe.priceRecipeNumber);
+                UserInterface.AlterRecipe(player1);
+                double cashUsed = player1.cash;
+                double actualCustomer = 0;
                 day.ShowActualWeather();
 
-                double MaxCustomer = GenerateCustomerMaxValue(day.weather.ForecastTemperature, day.weather.forecast);
-                for (int j = 0; j < MaxCustomer; j++)
+                double maxCustomer = GenerateCustomerMaxValue(day.weather.forecastTemperature, day.weather.forecast);
+                for (int j = 0; j < maxCustomer; j++)
                 {
-                    if (Player1.PlayerInventory.inventory[1] < Player1.PlayerRecipe.recipe[0] || Player1.PlayerInventory.inventory[2] < Player1.PlayerRecipe.recipe[1])
+                    if (player1.playerInventory.numberOfLemons < player1.playerRecipe.lemonRecipeNumber || player1.playerInventory.numberOfSugar < player1.playerRecipe.sugarRecipeNumber || player1.playerInventory.numberOfIcecubes < player1.playerRecipe.icecubeRecipeNumber || player1.playerInventory.numberOfCups < 1)
                     {
                         Console.WriteLine("You dont have enough ingredients.");
                         break;
                     }
                     Customer customer = new Customer();
-                    double Maxprice = customer.GetMaxPrice();
-                    double ChanceToBuy = customer.GenerateChanceToBuy();
-                    double WeatherModifier = customer.GetWeatherModifier(day.weather.GenerateActualWeather(day.weather.forecast), day.weather.GenerateActualTemperature(day.weather.ForecastTemperature));
-                    double SweetnessModifier = customer.SweetnessModifier(Player1.PlayerRecipe.recipe[0], Player1.PlayerRecipe.recipe[1], day.weather.GenerateActualTemperature(day.weather.ForecastTemperature));
-                    double MaxPriceModifier = customer.MaxPriceModifier(Maxprice, Player1.PlayerRecipe.recipe[3]);
-                    double IceModifier = customer.IceModifier(Player1.PlayerRecipe.recipe[3], day.weather.GenerateActualTemperature(day.weather.ForecastTemperature));
-                    ChanceToBuy = ChanceToBuy + WeatherModifier + SweetnessModifier + MaxPriceModifier + IceModifier;
-                    if (BuyIt(ChanceToBuy) == true)
+
+                    if (BuyIt(customer.TotalChanceToBuy(day.weather.actualForecast, day.weather.actualTemperature, player1.playerRecipe.lemonRecipeNumber, player1.playerRecipe.sugarRecipeNumber, player1.playerRecipe.icecubeRecipeNumber, player1.playerRecipe.priceRecipeNumber)))
                     {
-                        Player1.AddMoney(Player1.PlayerRecipe.recipe[3]);
-                        UserInterface.DisplayCash(Player1);
+                        player1.AddMoney(player1.playerRecipe.priceRecipeNumber);
+                        UserInterface.DisplayCash(player1);
                         pitcher--;
-                        Player1.PlayerInventory.inventory[0]--;
-                        Player1.PlayerInventory.inventory[3] -= Player1.PlayerRecipe.recipe[2];
-                        ActualCustomer++;
+                        player1.playerInventory.numberOfCups--;
+                        player1.playerInventory.numberOfIcecubes -= player1.playerRecipe.icecubeRecipeNumber;
+                        actualCustomer++;
 
                     }
-                    if (Player1.PlayerInventory.inventory[0] == 0)
+                    if (player1.playerInventory.numberOfCups == 0)
                     {
                         Console.WriteLine("You dont have enough cups.");
                         break;
                     }
                     if (pitcher == 0)
                     {
-                        NewPitcher(Player1);
+                        NewPitcher(player1);
                         pitcher = 32;
                     }
-                    if (Player1.PlayerInventory.inventory[1] < Player1.PlayerRecipe.recipe[0] || Player1.PlayerInventory.inventory[2] < Player1.PlayerRecipe.recipe[1] || Player1.PlayerInventory.inventory[3] < Player1.PlayerRecipe.recipe[2])
+                    if (player1.playerInventory.numberOfLemons < player1.playerRecipe.lemonRecipeNumber || player1.playerInventory.numberOfSugar < player1.playerRecipe.sugarRecipeNumber || player1.playerInventory.numberOfIcecubes < player1.playerRecipe.icecubeRecipeNumber)
                     {
                         Console.WriteLine("You dont have enough ingredients.");
                         break;
                     }
+
+
                 }
-                UserInterface.DisplayProfit(StartingCash, Player1.cash);
-                UserInterface.DisplayTotalProfit(CashUsed, Player1.cash);
-                UserInterface.GetCustomers(MaxCustomer, ActualCustomer);
+                UserInterface.DisplayProfit(startingCash, player1.cash);
+                UserInterface.DisplayTotalProfit(cashUsed, player1.cash);
+                UserInterface.GetCustomers(maxCustomer, actualCustomer);
             }
 
-            UserInterface.EndgameNotice(Player1, 20);
-        }
-        public bool BuyIt( double ChancetoBuy)
-        {
-            if (ChancetoBuy > 65)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            UserInterface.EndgameNotice(player1, 20);
         }
 
         public double GenerateCustomerMaxValue(int temperature, string forecast)
@@ -128,8 +119,34 @@ namespace LemonadeStand
         }
         public void NewPitcher(Player player)
         {
-            player.PlayerInventory.inventory[1] -= player.PlayerRecipe.recipe[0];
-                player.PlayerInventory.inventory[2] -= player.PlayerRecipe.recipe[1];
+            player.playerInventory.numberOfLemons -= player.playerRecipe.lemonRecipeNumber;
+            player.playerInventory.numberOfSugar -= player.playerRecipe.sugarRecipeNumber;
+        }
+
+        public bool BuyIt( double chanceTobuy)
+        {
+            if (chanceTobuy > 95)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+
+            }
         }
     }
 }
+
+
+
+
+
+
+
+                  
+// customer.SetModifiers(day.weather);
+
+
+
+

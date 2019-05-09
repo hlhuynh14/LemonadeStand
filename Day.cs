@@ -7,37 +7,39 @@ using System.Threading.Tasks;
 namespace LemonadeStand
 {
     class Day
-    {// member variables (HAS A)
-     public double TimeOfDay;
+    {
+        // member variables (HAS A)
+        // currently not using this but keeping around for use in later version
+        private double timeOfDay;
         public Weather weather;
+       
 
-
-     // constructor
+         // constructor
         
-     public Day()
-     {
-            TimeOfDay = 9;
-            weather = new Weather();
+         public Day()
+         {
+                timeOfDay = 9;
+                weather = new Weather();
 
-        }
+            }
 
-     // member methods (CAN DO)
-     public double AddHour(double TimeOfDay)
-     {
-       TimeOfDay = TimeOfDay + 1;
-            return TimeOfDay;
-     }
+         // member methods (CAN DO)
+         private double AddHour(double timeOfDay)
+         {
+                timeOfDay = timeOfDay + 1;
+                return timeOfDay;
+         }
         public void ShowWeather()
         {
-            int NewTemperatureForecast = weather.ForecastTemperature;
-            string NewForecast = weather.forecast;
-            UserInterface.DisplayWeatherForecast(NewTemperatureForecast, NewForecast);
+            int newTemperatureForecast = weather.forecastTemperature;
+            string newForecast = weather.forecast;
+            UserInterface.DisplayWeatherForecast(newTemperatureForecast, newForecast);
         }
         public void ShowActualWeather()
         {
-            double NewTemperatureForecast = weather.GenerateActualTemperature(weather.ForecastTemperature);
-            string NewForecast = weather.GenerateActualWeather(weather.forecast);
-            UserInterface.DisplayActualWeatherForecast(NewTemperatureForecast, NewForecast);
+            double newTemperatureForecast = weather.actualTemperature;
+            string newForecast = weather.actualForecast;
+            UserInterface.DisplayActualWeatherForecast(newTemperatureForecast, newForecast);
         }
     }
 }

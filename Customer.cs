@@ -8,62 +8,64 @@ namespace LemonadeStand
 {
     class Customer
     {// member variables (HAS A)
-        double LemonFlavorModifier;
-        double SweetToothModifier;
-        double CoolnessModifier;
-        double PriceModifier;
-        double ChanceToBuy;
-        double MaxPrice;
+        double lemonFlavorModifier;
+        double sweetToothModifier;
+        double coolnessModifier;
+        double priceModifier;
+        double chanceToBuy;
+        double maxPrice;
+
+
      // constructor
      public Customer()
      {
-            LemonFlavorModifier = -30;
-             SweetToothModifier = 20;
-            CoolnessModifier = 25;
-             PriceModifier = 50;
-            ChanceToBuy = GenerateChanceToBuy();
-            MaxPrice = GetMaxPrice();
+            lemonFlavorModifier = -30;
+             sweetToothModifier = 20;
+            coolnessModifier = 50;
+             priceModifier = 50;
+            chanceToBuy = GenerateChanceToBuy();
+            maxPrice = GetMaxPrice();
 
      }
 
      // member methods (CAN DO)
-     public double GenerateChanceToBuy()
+     protected double GenerateChanceToBuy()
         {
             Random rnd = new Random();
-            double  ChanceToBuy = rnd.Next(0, 101);
-            return ChanceToBuy;
+            double  chanceToBuy = rnd.Next(0, 22);
+            return chanceToBuy;
         }
-     public double GetWeatherModifier(string ActualWeather, double ActualTemperature)
+     protected double GetWeatherModifier(string actualWeather, double actualTemperature)
      {
-            if (ActualWeather == "Sunny" && ActualTemperature >= 80)
+            if (actualWeather == "Sunny" && actualTemperature >= 80)
             {
                 return 20;
             }
-            else if (ActualWeather == "Cloudy" && ActualTemperature >= 80)
+            else if (actualWeather == "Cloudy" && actualTemperature >= 80)
             {
                 return 15;
             }
-            else if (ActualWeather == "Rainy" && ActualTemperature >= 80)
+            else if (actualWeather == "Rainy" && actualTemperature >= 80)
             {
                 return 10;
             }
-            else if (ActualWeather == "Sunny" && ActualTemperature > 65)
+            else if (actualWeather == "Sunny" && actualTemperature > 65)
             {
                 return 10;
             }
-            else if (ActualWeather == "Cloudy" && ActualTemperature > 65)
+            else if (actualWeather == "Cloudy" && actualTemperature > 65)
             {
                 return 5;
             }
-            else if (ActualWeather == "Rainy" && ActualTemperature > 65)
+            else if (actualWeather == "Rainy" && actualTemperature > 65)
             {
                 return 0;
             }
-            else if (ActualWeather == "Sunny" && ActualTemperature > 58)
+            else if (actualWeather == "Sunny" && actualTemperature > 58)
             {
                 return -5;
             }
-            else if (ActualWeather == "Cloudy" && ActualTemperature > 58)
+            else if (actualWeather == "Cloudy" && actualTemperature > 58)
             {
                 return -10;
             }
@@ -72,68 +74,84 @@ namespace LemonadeStand
                 return -20;
             }
      }
-     public double SweetnessModifier(double lemon, double sugar, double ActualTemperature)
+     protected double SweetnessModifier(double lemon, double sugar, double actualTemperature)
         {
-            double SweetToothDeviation = 10;
-            if ( 2 < sugar && (lemon - sugar) <= 3 && lemon < 8 && ActualTemperature > 80)
+            double sweetToothDeviation = 10;
+            if ( 2 < sugar && (lemon - sugar) <= 3 && lemon < 8 && actualTemperature > 80)
             {
-                return SweetToothModifier;
+                return sweetToothModifier;
             }
-            else if (5 < sugar && (lemon - sugar) <= 4 && lemon > 9 && ActualTemperature < 70)
+            else if (5 < sugar && (lemon - sugar) <= 4 && lemon > 9 && actualTemperature < 70)
             {
-                return SweetToothModifier;
+                return sweetToothModifier;
             }
             else if (2 < sugar && (lemon - sugar) <= 4)
             {
-                return SweetToothModifier -= SweetToothDeviation;
+                return sweetToothModifier -= sweetToothDeviation;
             }
             else if( (lemon - sugar) > 4)
             {
-                return LemonFlavorModifier;
+                return lemonFlavorModifier;
             }
             else
             {
-                return -SweetToothModifier;
+                return -sweetToothModifier;
             }
         }
-        public double GetMaxPrice()
+        protected double GetMaxPrice()
         {
             Random rnd = new Random();
-            double MaxPrice = rnd.Next(15, 41);
-            return MaxPrice;
+            double maxPrice = rnd.Next(20, 41);
+            return maxPrice;
         }
-        public double MaxPriceModifier(double Maxprice, double price)
+        protected double MaxPriceModifier(double maxprice, double price)
         {
-            if (Maxprice > price)
+            if (maxprice > price)
             {
-                return PriceModifier;
+                return priceModifier;
             }
             else
             {
-                return -PriceModifier;
+                return -priceModifier;
             }
         }
-        public double IceModifier( double icecubes, double temperature)
-        { double IcePerCupHotDay = 8;
-            double IcePerCupWarmDay = 6;
+        protected double IceModifier( double icecubes, double temperature)
+        { double icePerCupHotDay = 8;
+            double icePerCupWarmDay = 6;
 
-            if (icecubes > IcePerCupHotDay && 10 >= icecubes && temperature > 85)
+            if (icecubes > icePerCupHotDay && temperature > 85)
             {
-                return CoolnessModifier;
+                return coolnessModifier;
             }
-            else if (icecubes > IcePerCupWarmDay && 8 >= icecubes && temperature > 70)
+            else if (icecubes > icePerCupWarmDay && temperature > 70)
             {
-                return CoolnessModifier;
+                return coolnessModifier;
             }
-            else if ( 6 > icecubes && temperature > 70)
+            else if (icePerCupWarmDay > icecubes && temperature > 70)
             {
-                return -CoolnessModifier;
+                return -coolnessModifier;
+            }
+            else if (icecubes > 3 && temperature < 70)
+            {
+                return -coolnessModifier;
             }
             else
             {
                 return 0;
             }
 
+        }
+
+        public double TotalChanceToBuy(string forecast, int temperature, double lemons, double sugar, double icecubes, double price)
+        {
+            double maxprice = GetMaxPrice();
+            double chanceToBuy = GenerateChanceToBuy();
+            double weatherModifier = GetWeatherModifier(forecast, temperature);
+            double sweetModifier = SweetnessModifier(lemons, sugar, temperature);
+            double maxPriceModifier = MaxPriceModifier(maxprice, price);
+            double iceModifier = IceModifier(icecubes, temperature);
+            chanceToBuy = chanceToBuy + weatherModifier + sweetModifier + maxPriceModifier + iceModifier;
+            return chanceToBuy;
         }
     }
 }
