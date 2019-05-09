@@ -16,6 +16,5 @@ namespace LemonadeStand
 
         }
      // member methods (CAN DO)
-
     }
 }

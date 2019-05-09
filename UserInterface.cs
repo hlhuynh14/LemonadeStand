@@ -18,11 +18,17 @@ namespace LemonadeStand
      // member methods (CAN DO)
      public static void DisplayWeatherForecast( double temperature, string forecast)
      {
-            Console.WriteLine($"Temperature: {temperature}");
+            Console.WriteLine($"Temperature forecast: {temperature}");
             Console.WriteLine($"Forecast: {forecast}");
 
      }
-     public static void CheckInventory(double cups, double lemons, double sugar, double icecubes)
+     public static void DisplayActualWeatherForecast(double temperature, string forecast)
+     {
+            Console.WriteLine($"Temperature: {temperature}");
+            Console.WriteLine($"Actual Weather: {forecast}");
+
+     }
+        public static void CheckInventory(double cups, double lemons, double sugar, double icecubes)
      {
             Console.WriteLine($"You have {cups} cups.");
             Console.WriteLine($"You have {lemons} lemons.");
@@ -78,14 +84,55 @@ namespace LemonadeStand
      }
      public static void DisplayCash(Player player)
      {
-            Console.WriteLine($"You have ${player.cash}");
+            Console.WriteLine($"You have ${player.cash}.");
      }
      public static void BadInput()
-        {
+     {
             Console.WriteLine(" That is not a correct input, please try again!");
+     }
+        public static void DisplayTotalProfit(double StartingCash, double CurrentCash)
+        {
+            double TotalProfit = CurrentCash - StartingCash;
+
+            if (TotalProfit > 0)
+            {
+                Console.WriteLine($"You made ${TotalProfit} so far! ");
+            }
+            else
+            {
+                Console.WriteLine($"You lost $ {TotalProfit} so far!");
+
+            }
         }
+        public static void DisplayProfit(double StartingCash, double CurrentCash)
+        {
+            double NetProfit = CurrentCash - StartingCash;
 
+            if (NetProfit > 0)
+            {
+                Console.WriteLine($"Your net profit for today is ${NetProfit}. ");
+            }
+            else
+            {
+                Console.WriteLine($"Your net lost for today is ${NetProfit}.");
 
-     
+            }
+        }
+        public static void GetCustomers(double PotentialCustomer, double ActualCustomers)
+        {
+            Console.WriteLine($"{ActualCustomers} customers bought your lemonade out of {PotentialCustomer} potential customers.");
+        }
+        public static void EndgameNotice(Player player, double StartingCash)
+        {
+            double NetCash = player.cash - StartingCash;
+            if (NetCash > 0)
+            {
+                Console.WriteLine($"Your sales are over, you made ${NetCash}!");
+            }
+            else
+            {
+                Console.WriteLine($"Your sales are over, you lost ${NetCash}!");
+            }
+        }
     }
 }

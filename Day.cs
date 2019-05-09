@@ -37,7 +37,7 @@ namespace LemonadeStand
         {
             double NewTemperatureForecast = weather.GenerateActualTemperature(weather.ForecastTemperature);
             string NewForecast = weather.GenerateActualWeather(weather.forecast);
-            UserInterface.DisplayWeatherForecast(NewTemperatureForecast, NewForecast);
+            UserInterface.DisplayActualWeatherForecast(NewTemperatureForecast, NewForecast);
         }
     }
 }

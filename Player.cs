@@ -23,7 +23,7 @@ namespace LemonadeStand
      // member methods (CAN DO)
      public void AddMoney(double price)
      {
-            cash = cash + price
+            cash += price;
      }
      
     }
