@@ -63,16 +63,16 @@ namespace LemonadeStand
                 Console.WriteLine("Please enter a number next time or you will have start all over!");
                 NewRecipe(player);
             }
-            player.playerRecipe.ChangeRecipe(player, lemons, cupsOfSugar, icecubes, pricePerCup);
+           ChangeRecipe(lemons, cupsOfSugar, icecubes, pricePerCup);
             UserInterface.RecipeSatisfaction(player);
 
         }
-        private void ChangeRecipe(Player player, double lemons, double sugar, double icecubes, double PricePerCup)
+        private void ChangeRecipe( double lemons, double sugar, double icecubes, double PricePerCup)
         {
-            player.playerRecipe.lemonRecipeNumber = lemons;
-            player.playerRecipe.sugarRecipeNumber = sugar;
-            player.playerRecipe.icecubeRecipeNumber = icecubes;
-            player.playerRecipe.priceRecipeNumber = PricePerCup;
+            lemonRecipeNumber = lemons;
+            sugarRecipeNumber = sugar;
+            icecubeRecipeNumber = icecubes;
+            priceRecipeNumber = PricePerCup;
         }
     }
 }

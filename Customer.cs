@@ -151,7 +151,7 @@ namespace LemonadeStand
             double maxPriceModifier = MaxPriceModifier(maxprice, price);
             double iceModifier = IceModifier(icecubes, temperature);
             chanceToBuy = chanceToBuy + weatherModifier + sweetModifier + maxPriceModifier + iceModifier;
-            Console.WriteLine(chanceToBuy);
+            //Console.WriteLine(chanceToBuy); customer bug test.
             return chanceToBuy;
         }
     }

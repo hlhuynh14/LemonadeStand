@@ -188,13 +188,19 @@ namespace LemonadeStand
             Int32.TryParse(Console.ReadLine(), out answer);
             if (answer == 0)
             {
-                Console.WriteLine("Please enter a number next time");
+                Console.WriteLine("Please enter a number next time.");
                return AskGameDays();
             }
             else
             {
                 return answer;
             }
+        }
+        public static void EndDayStats(double startingCash, double cashUsed, double maxCustomer, double actualCustomer, Player player)
+        {
+            UserInterface.DisplayProfit(startingCash, player.cash);
+            UserInterface.DisplayTotalProfit(cashUsed, player.cash);
+            UserInterface.GetCustomers(maxCustomer, actualCustomer);
         }
     }
 }
