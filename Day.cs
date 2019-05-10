@@ -12,6 +12,7 @@ namespace LemonadeStand
         // currently not using this but keeping around for use in later version
         private double timeOfDay;
         public Weather weather;
+        public WeatherReport weatherReport;
        
 
          // constructor
@@ -20,6 +21,7 @@ namespace LemonadeStand
          {
                 timeOfDay = 9;
                 weather = new Weather();
+            weatherReport = new WeatherReport();
 
             }
 

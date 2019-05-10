@@ -7,3 +7,7 @@ C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\LemonadeStand\LemonadeStand\obj\
 C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\LemonadeStand\LemonadeStand\obj\Debug\LemonadeStand.csproj.CoreCompileInputs.cache
 C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\LemonadeStand\LemonadeStand\obj\Debug\LemonadeStand.exe
 C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\LemonadeStand\LemonadeStand\obj\Debug\LemonadeStand.pdb
+C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\LemonadeStand\LemonadeStand\bin\Debug\Json.Net.dll
+C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\LemonadeStand\LemonadeStand\bin\Debug\Newtonsoft.Json.dll
+C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\LemonadeStand\LemonadeStand\bin\Debug\Newtonsoft.Json.xml
+C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\LemonadeStand\LemonadeStand\obj\Debug\LemonadeStand.csproj.CopyComplete

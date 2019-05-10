@@ -24,8 +24,7 @@ namespace LemonadeStand
         }
         // member methods (CAN DO)
         public void StartGame()
-        {
-            
+        { 
             UserInterface.ShowRules();
             double gameDays = UserInterface.AskGameDays();
             GameDaysLoop(gameDays);
