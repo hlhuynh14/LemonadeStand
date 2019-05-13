@@ -37,35 +37,35 @@ namespace LemonadeStand
         }
      protected double GetWeatherModifier(string actualWeather, double actualTemperature)
      {
-            if (actualWeather == "Sunny" && actualTemperature >= 80)
+            if (Program.weatherDescription == "clear sky" && Program.temperatureDescription >= 80)
             {
                 return 20;
             }
-            else if (actualWeather == "Cloudy" && actualTemperature >= 80)
+            else if (Program.weatherDescription == " few cloud" && Program.temperatureDescription >= 80)
             {
                 return 15;
             }
-            else if (actualWeather == "Rainy" && actualTemperature >= 80)
+            else if (Program.weatherDescription == "rain" && Program.temperatureDescription >= 80)
             {
                 return 10;
             }
-            else if (actualWeather == "Sunny" && actualTemperature > 65)
+            else if (Program.weatherDescription == "clear sky" && Program.temperatureDescription > 65)
             {
                 return 10;
             }
-            else if (actualWeather == "Cloudy" && actualTemperature > 65)
+            else if (Program.weatherDescription == "few cloud" && Program.temperatureDescription > 65)
             {
                 return 5;
             }
-            else if (actualWeather == "Rainy" && actualTemperature > 65)
+            else if (Program.weatherDescription == "rain" && Program.temperatureDescription > 65)
             {
                 return 0;
             }
-            else if (actualWeather == "Sunny" && actualTemperature > 58)
+            else if (Program.weatherDescription == "clear sky" && Program.temperatureDescription > 58)
             {
                 return -5;
             }
-            else if (actualWeather == "Cloudy" && actualTemperature > 58)
+            else if (Program.weatherDescription == "few cloud" && Program.temperatureDescription > 58)
             {
                 return -10;
             }

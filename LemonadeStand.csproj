@@ -62,7 +62,6 @@
     <Compile Include="Store.cs" />
     <Compile Include="UserInterface.cs" />
     <Compile Include="Weather.cs" />
-    <Compile Include="WeatherReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

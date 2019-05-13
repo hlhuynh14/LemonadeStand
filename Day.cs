@@ -12,7 +12,7 @@ namespace LemonadeStand
         // currently not using this but keeping around for use in later version
         private double timeOfDay;
         public Weather weather;
-        public WeatherReport weatherReport;
+       
        
 
          // constructor
@@ -21,7 +21,7 @@ namespace LemonadeStand
          {
                 timeOfDay = 9;
                 weather = new Weather();
-            weatherReport = new WeatherReport();
+           
 
             }
 
@@ -35,13 +35,13 @@ namespace LemonadeStand
         {
             int newTemperatureForecast = weather.forecastTemperature;
             string newForecast = weather.forecast;
-            UserInterface.DisplayWeatherForecast(newTemperatureForecast, newForecast);
+            UserInterface.DisplayWeatherForecast(Program.temperatureDescription, Program.weatherDescription);
         }
         public void ShowActualWeather()
         {
             double newTemperatureForecast = weather.actualTemperature;
             string newForecast = weather.actualForecast;
-            UserInterface.DisplayActualWeatherForecast(newTemperatureForecast, newForecast);
+            UserInterface.DisplayActualWeatherForecast(Program.temperatureDescription, Program.weatherDescription);
         }
     }
 }

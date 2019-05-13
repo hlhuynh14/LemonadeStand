@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using Newtonsoft;
-
+using Newtonsoft.Json.Linq;
 
 namespace LemonadeStand
 {
     class Program
     {
+        public static string weatherDescription;
+        public static double temperatureDescription;
+
         static void Main(string[] args)
         {
            
@@ -20,6 +23,8 @@ namespace LemonadeStand
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             GetWeather(client).Wait();
+            
+
 
 
             Game GameStart = new Game();
@@ -36,13 +41,22 @@ namespace LemonadeStand
                 if (res.IsSuccessStatusCode)
                 {
                     string result = await res.Content.ReadAsStringAsync();
-                    WeatherReport weatherReport = Newtonsoft.Json.JsonConvert.DeserializeObject<WeatherReport>(result);
-                   
-
+                    var forecast = JObject.Parse(result);
+                    weatherDescription = forecast["weather"][0]["main"].ToString();
+                    temperatureDescription = double.Parse(forecast["main"]["temp"].ToString());
+                    temperatureDescription = ConvertToFahrenheit(temperatureDescription);
 
 
                 }
-            }
+            } 
         }
+
+   
+        static double ConvertToFahrenheit( double temperature)
+        {
+             temperature = (temperature - 273) * (18 / 10) + 32;
+            return temperature;
+        }
+
     }
 }

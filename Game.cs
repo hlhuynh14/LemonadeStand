@@ -33,27 +33,27 @@ namespace LemonadeStand
 
         private double GenerateCustomerMaxValue(int temperature, string forecast)
         {
-            if (temperature > 80 && forecast == "Sunny")
+            if (Program.temperatureDescription > 80 && Program.weatherDescription == "Clear Sky")
             {
                 return 100;
             }
-            else if (temperature > 60 && forecast == "Sunny")
+            else if (Program.temperatureDescription > 60 && Program.weatherDescription == "Clear SKy")
             {
                 return 70;
             }
-            if (temperature > 80 && forecast == "Cloudy")
+            if (Program.temperatureDescription > 80 && Program.weatherDescription == "few clouds")
             {
                 return 95;
             }
-            else if (temperature > 60 && forecast == "Cloudy")
+            else if (Program.temperatureDescription > 60 && Program.weatherDescription == "few clouds")
             {
                 return 65;
             }
-            if (temperature > 80 && forecast == "Rainy")
+            if (Program.temperatureDescription > 80 && Program.weatherDescription == "rain")
             {
                 return 85;
             }
-            else if (temperature > 60 && forecast == "rainy")
+            else if (Program.temperatureDescription > 60 && Program.weatherDescription == "rain")
             {
                 return 60;
             }
