@@ -96,7 +96,7 @@ namespace LemonadeStand
         }
         public  void BuyingItems(Player player)
         {
-            Console.WriteLine("What would like to buy? cups, lemons, sugar, iceCubes or enter exit to exit the store.");
+            Console.WriteLine("What would like to buy? cups, lemons, sugar, icecubes or enter exit to exit the store.");
             string answer = Console.ReadLine();
             switch (answer)
             {

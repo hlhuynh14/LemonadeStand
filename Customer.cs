@@ -32,40 +32,40 @@ namespace LemonadeStand
      protected double GenerateChanceToBuy()
         {
             Random rnd = new Random();
-            double  chanceToBuy = rnd.Next(0, 22);
+            double  chanceToBuy = rnd.Next(0, 50);
             return chanceToBuy;
         }
      protected double GetWeatherModifier(string actualWeather, double actualTemperature)
      {
-            if (Program.weatherDescription == "clear sky" && Program.temperatureDescription >= 80)
+            if (Program.weatherDescription == "Clear" && Program.temperatureDescription >= 80)
             {
                 return 20;
             }
-            else if (Program.weatherDescription == " few cloud" && Program.temperatureDescription >= 80)
+            else if (Program.weatherDescription == "Clouds" && Program.temperatureDescription >= 80)
             {
                 return 15;
             }
-            else if (Program.weatherDescription == "rain" && Program.temperatureDescription >= 80)
+            else if (Program.weatherDescription == "Rain" && Program.temperatureDescription >= 80)
             {
                 return 10;
             }
-            else if (Program.weatherDescription == "clear sky" && Program.temperatureDescription > 65)
+            else if (Program.weatherDescription == "Clear" && Program.temperatureDescription > 65)
             {
                 return 10;
             }
-            else if (Program.weatherDescription == "few cloud" && Program.temperatureDescription > 65)
+            else if (Program.weatherDescription == "Clouds" && Program.temperatureDescription > 65)
             {
                 return 5;
             }
-            else if (Program.weatherDescription == "rain" && Program.temperatureDescription > 65)
+            else if (Program.weatherDescription == "Rain" && Program.temperatureDescription > 65)
             {
                 return 0;
             }
-            else if (Program.weatherDescription == "clear sky" && Program.temperatureDescription > 58)
+            else if (Program.weatherDescription == "Clear" && Program.temperatureDescription > 58)
             {
                 return -5;
             }
-            else if (Program.weatherDescription == "few cloud" && Program.temperatureDescription > 58)
+            else if (Program.weatherDescription == "Clouds" && Program.temperatureDescription > 58)
             {
                 return -10;
             }
@@ -101,7 +101,8 @@ namespace LemonadeStand
         protected double GetMaxPrice()
         {
             Random rnd = new Random();
-            double maxPrice = rnd.Next(20, 41);
+            double maxPrice = rnd.Next(25, 100);
+            maxPrice = maxPrice * .01;
             return maxPrice;
         }
         protected double MaxPriceModifier(double maxprice, double price)
@@ -151,7 +152,7 @@ namespace LemonadeStand
             double maxPriceModifier = MaxPriceModifier(maxprice, price);
             double iceModifier = IceModifier(icecubes, temperature);
             chanceToBuy = chanceToBuy + weatherModifier + sweetModifier + maxPriceModifier + iceModifier;
-            //Console.WriteLine(chanceToBuy); customer bug test.
+            //Console.WriteLine(chanceToBuy); 
             return chanceToBuy;
         }
     }
